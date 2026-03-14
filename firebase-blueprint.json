@@ -1,0 +1,39 @@
+{
+  "entities": {
+    "Scenario": {
+      "title": "Scenario",
+      "description": "A custom educational scenario created by a teacher",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "gameType": { "type": "string" },
+        "interactionType": { "type": "string" },
+        "backgroundImage": { "type": "string" },
+        "isCustom": { "type": "boolean" },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "question": { "type": "string" },
+              "questionImage": { "type": "string" },
+              "answer": { "type": "string" },
+              "options": { "type": "array", "items": { "type": "string" } },
+              "optionImages": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "title", "gameType", "interactionType", "items"]
+    }
+  },
+  "firestore": {
+    "scenarios": {
+      "schema": "Scenario",
+      "description": "Collection of custom scenarios"
+    }
+  }
+}
