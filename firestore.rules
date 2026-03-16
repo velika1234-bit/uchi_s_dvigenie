@@ -17,11 +17,11 @@ service cloud.firestore {
       // Allow everyone to read scenarios so students can play
       allow read: if true;
       
-      // Allow authenticated users to create/update/delete scenarios
-      // For this prototype, we'll allow any authenticated user to manage scenarios
-      allow create: if isAuthenticated() && isValidScenario(request.resource.data);
-      allow update: if isAuthenticated() && isValidScenario(request.resource.data);
-      allow delete: if isAuthenticated();
+      // Allow any user (including anonymous/unauthenticated) to write for this school prototype
+      // PIN-based access control is handled at the application layer
+      allow create: if isValidScenario(request.resource.data);
+      allow update: if isValidScenario(request.resource.data);
+      allow delete: if true;
     }
   }
 }
